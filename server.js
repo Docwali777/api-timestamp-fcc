@@ -18,7 +18,7 @@ app.get('/:date', (req, res) => {
   let {date} = req.params
 
   let dateAndUnix = {
-    unix: Boolean(new Date(date).valueOf()) === false
+    UnixTime: Boolean(new Date(date).valueOf()) === false
       ? + date
       : new Date(date).valueOf()
   }
@@ -41,7 +41,7 @@ app.get('/:date', (req, res) => {
   let day = (new Date(+ date).getDay())
   let month = (new Date(+ date).getMonth())
   let year = new Date(+ date).getFullYear()
-  dateAndUnix.date = +date !== dateAndUnix.unix
+  dateAndUnix.Date = +date !== dateAndUnix.unix
     ? date
     : `${setMonth[month]} ${day}, ${year} `
 
