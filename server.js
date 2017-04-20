@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 const bodyParser = require('body-parser')
 const querystring = require('querystring');
+const ejs = require('ejs');
 const URL = require('url').URL;
 
 
@@ -55,8 +56,17 @@ let dateAndUnix = {
 }
 dateAndUnix.date= +date !== dateAndUnix.unix ? (+new Date(date) > 0 ? date : 'Please enter correct Date format') : `${setMonth[month]} ${day}, ${year} `
 
-  res.json(dateAndUnix)
+  res.render('index', {
+     unix: dateAndUnix.unix,
+     date: dateAndUnix.date
+   }
+ )
 })
+
+
+
+
+
 
 
 app.listen(PORT, ()=>{
